@@ -1,0 +1,3 @@
+A `rand` RNG using murmur3 bix mixing functions.
+
+This crate provides 32 and 64 bit mixers.
