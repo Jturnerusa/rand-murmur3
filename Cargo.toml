@@ -9,3 +9,10 @@ homepage = "https://github.com/Jturnerusa/rand-murmur3"
 
 [dependencies]
 rand_core = "0.6.4"
+
+[dev-dependencies]
+criterion = "0.5.1"
+
+[[bench]]
+name = "throughput"
+harness = false
