@@ -4,7 +4,7 @@ use rand_core::{RngCore, SeedableRng};
 pub struct Seed32(pub [u8; 4]);
 
 #[derive(Clone, Copy, Debug)]
-pub struct Murmur32 {
+pub struct Mixer32 {
     state: u32,
 }
 
@@ -20,7 +20,7 @@ impl AsMut<[u8]> for Seed32 {
     }
 }
 
-impl SeedableRng for Murmur32 {
+impl SeedableRng for Mixer32 {
     type Seed = Seed32;
 
     fn from_seed(seed: Self::Seed) -> Self {
@@ -30,7 +30,7 @@ impl SeedableRng for Murmur32 {
     }
 }
 
-impl RngCore for Murmur32 {
+impl RngCore for Mixer32 {
     fn next_u32(&mut self) -> u32 {
         self.state = self
             .state
