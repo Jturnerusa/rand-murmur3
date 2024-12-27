@@ -2,7 +2,7 @@ use std::iter;
 
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use rand_core::{RngCore, SeedableRng};
-use rand_murmur3::{Mixer32, Mixer64, Seed32, Seed64};
+use rand_murmur3::{Mixer32, Mixer64};
 
 #[derive(Clone, Copy, Debug)]
 struct NoopRng;
@@ -77,8 +77,7 @@ fn counter(c: &mut Criterion) {
 }
 
 fn mixer32(c: &mut Criterion) {
-    let seed = Seed32(10u32.to_ne_bytes());
-    let rng = Mixer32::from_seed(seed);
+    let rng = Mixer32::from_seed(10u32.to_ne_bytes());
 
     c.bench_function("mixer32", |bench| {
         bench.iter(|| throughput::<Mixer32>(black_box(rng), black_box(4000000)))
@@ -86,8 +85,7 @@ fn mixer32(c: &mut Criterion) {
 }
 
 fn mixer64(c: &mut Criterion) {
-    let seed = Seed64(10u64.to_ne_bytes());
-    let rng = Mixer64::from_seed(seed);
+    let rng = Mixer64::from_seed(10u64.to_ne_bytes());
 
     c.bench_function("mixer32", |bench| {
         bench.iter(|| throughput::<Mixer64>(black_box(rng), black_box(4000000)))
