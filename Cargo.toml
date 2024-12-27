@@ -2,6 +2,10 @@
 name = "rand-murmur3"
 version = "0.1.0"
 edition = "2021"
+authors = ["John Turner"]
+license = "GPL-3.0-or-later"
+repository = "https://github.com/Jturnerusa/rand-murmur3"
+homepage = "https://github.com/Jturnerusa/rand-murmur3"
 
 [dependencies]
 rand_core = "0.6.4"
