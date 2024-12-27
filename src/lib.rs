@@ -32,15 +32,13 @@ impl SeedableRng for Murmur32 {
 
 impl RngCore for Murmur32 {
     fn next_u32(&mut self) -> u32 {
-        let mut k = self.state;
+        self.state = self
+            .state
+            .wrapping_mul(0xcc9e2d51)
+            .rotate_left(15)
+            .wrapping_mul(0x1b873593);
 
-        k *= 0xcc9e2d51;
-        k = k.rotate_left(15);
-        k *= 0x1b873593;
-
-        self.state = k;
-
-        k
+        self.state
     }
 
     fn next_u64(&mut self) -> u64 {
